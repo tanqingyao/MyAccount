@@ -22,7 +22,7 @@ public class ConfigListener implements ActionListener{
 //    	System.out.println("run..." + mysqlPath.length());
         if(0!=mysqlPath.length()){
         	System.out.println(mysqlPath.length());
-            File commandFile = new File(mysqlPath,"bin/mysql");
+            File commandFile = new File(mysqlPath);
             if(!commandFile.exists()){
                 JOptionPane.showMessageDialog(p, "Mysql路径不正确");
                 p.tfMysqlPath.grabFocus();

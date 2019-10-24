@@ -231,7 +231,9 @@ public class RecordDAO {
     public List<Record> listThisMonth(){
         return list(DateUtil.monthBegin(),DateUtil.monthEnd());
     }
-     
+    public List<Record> listThisMonth(String YearMonth){
+        return list(DateUtil.monthBegin(YearMonth),DateUtil.monthEnd(YearMonth));
+    }
     public List<Record> list(Date start, Date end) {
         List<Record> records = new ArrayList<Record>();
         String sql = "select * from record where date >=? and date <= ?";

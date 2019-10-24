@@ -19,11 +19,13 @@ public class CategoryListener implements ActionListener {
         JButton b = (JButton) e.getSource();
         if (b == p.bAdd) {
             String name = JOptionPane.showInputDialog(null);
+            if (null== name) {	//取消
+                return;
+            }
             if (0 == name.length()) {
                 JOptionPane.showMessageDialog(p, "分类名称不能为空");
                 return;
             }
- 
             new CategoryService().add(name);
  
         }
@@ -31,6 +33,9 @@ public class CategoryListener implements ActionListener {
             Category c = p.getSelectedCategory();
             int id = c.id;
             String name = JOptionPane.showInputDialog("修改分类名称", c.name);
+            if (null== name) {	//取消
+                return;
+            }
             if (0 == name.length()) {
                 JOptionPane.showMessageDialog(p, "分类名称不能为空");
                 return;

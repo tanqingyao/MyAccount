@@ -36,6 +36,10 @@ public class CategoryDetailListener implements ActionListener {
             Record r = p.getSelectedRecord();
             int id = r.id;
             String s = JOptionPane.showInputDialog("修改消费金额", r.spend);
+
+            if (null== s) {	//取消
+                return;
+            }
             int spend = Integer.parseInt(s);
             String comment = JOptionPane.showInputDialog("修改备注", r.comment);
 //            String date = JOptionPane.showInputDialog("修改消费金额", r.date);

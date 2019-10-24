@@ -20,8 +20,10 @@ public class ToolBarListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         MainPanel p = MainPanel.instance;
         JButton b = (JButton) e.getSource();
-        if (b == p.bReport)
+        if (b == p.bReport) {
             p.workingPanel.show(ReportPanel.instance);
+        	ReportPanel.instance.updateData();
+        }
         if (b == p.bCategoryDetail)
             p.workingPanel.show(CategoryDetailPanel.instance);
         if (b == p.bCategory)

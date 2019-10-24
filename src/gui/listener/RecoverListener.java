@@ -13,7 +13,7 @@ import gui.panel.BackupPanel;
 import gui.panel.ConfigPanel;
 import gui.panel.MainPanel;
 import service.ConfigService;
-import util.MysqlUtil;
+import util.SqliteUtil;
  
 public class RecoverListener implements ActionListener {
  
@@ -28,26 +28,26 @@ public class RecoverListener implements ActionListener {
             return;
         }
         JFileChooser fc = new JFileChooser();
-        fc.setSelectedFile(new File("hutubill.sql"));
+        fc.setSelectedFile(new File("MyAccout.db"));
         fc.setFileFilter(new FileFilter() {
              
             @Override
             public String getDescription() {
-                return ".sql";
+                return ".db";
             }
              
             @Override
             public boolean accept(File f) {
-                return f.getName().toLowerCase().endsWith(".sql");
+                return f.getName().toLowerCase().endsWith(".db");
             }
         });
  
          int returnVal =  fc.showOpenDialog(p);
          File file = fc.getSelectedFile();
-         System.out.println(file);
+//         System.out.println(file);
          if (returnVal == JFileChooser.APPROVE_OPTION) {
             try {
-                MysqlUtil.recover(mysqlPath,file.getAbsolutePath());
+                SqliteUtil.recover(mysqlPath,file.getAbsolutePath());
 //              MysqlUtil.recover(mysqlPath, file.getAbsolutePath());
                 JOptionPane.showMessageDialog(p, "恢复成功");
             } catch (Exception e1) {

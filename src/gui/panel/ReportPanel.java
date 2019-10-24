@@ -5,10 +5,16 @@ import java.awt.Image;
 import java.util.List;
 
 import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import entity.Category;
 import entity.Record;
+import gui.listener.CategoryDetailCheckBoxListener;
+import gui.listener.ReportListener;
+import gui.model.CategoryComboBoxModel;
+import gui.model.MonthComboBoxModel;
 import service.ReportService;
 import util.ChartUtil;
 import util.GUIUtil;
@@ -19,16 +25,26 @@ public class ReportPanel extends WorkingPanel {
     }
  
     public static ReportPanel instance = new ReportPanel();
- 
+    
+    public MonthComboBoxModel cbModel = new MonthComboBoxModel();
+    public JComboBox<String> cbMonth = new JComboBox<>(cbModel);
+    public String SelectedMonth = null;
     public JLabel l = new JLabel();
  
     public ReportPanel() {
-        this.setLayout(new BorderLayout());
+    	JPanel pMenu = new JPanel();
+    	pMenu.add(cbMonth);
+        
         List<Record> rs = new ReportService().listThisMonthRecords();
-        Image i =ChartUtil.getImage(rs, 400, 300);
+        Image i =ChartUtil.getImage(rs, 500, 250);
         ImageIcon icon= new ImageIcon(i);
         l.setIcon(icon);
-        this.add(l);
+
+        this.setLayout(new BorderLayout());
+        this.add(pMenu,BorderLayout.NORTH);
+        this.add(l, BorderLayout.CENTER);
+        
+        addListener();
     }
  
     public static void main(String[] args) {
@@ -37,16 +53,24 @@ public class ReportPanel extends WorkingPanel {
 
 	@Override
 	public void updateData() {
-        List<Record> rs = new ReportService().listThisMonthRecords();
-        Image i = ChartUtil.getImage(rs, 350, 250);
+		List<Record> rs;
+		if(null == SelectedMonth)
+			rs = new ReportService().listThisMonthRecords();
+		else
+			rs = new ReportService().listThisMonthRecords(SelectedMonth);
+        Image i = ChartUtil.getImage(rs, 500, 250);
         ImageIcon icon = new ImageIcon(i);
         l.setIcon(icon);		
+        
+        cbModel.cs = new ReportService().listRecordsMonth();
+        
 	}
 
 	@Override
 	public void addListener() {
 		// TODO Auto-generated method stub
-		
+		ReportListener listener = new ReportListener();
+		cbMonth.addActionListener(listener);
 	}
  
 }

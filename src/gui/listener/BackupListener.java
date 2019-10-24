@@ -13,7 +13,7 @@ import gui.panel.BackupPanel;
 import gui.panel.ConfigPanel;
 import gui.panel.MainPanel;
 import service.ConfigService;
-import util.MysqlUtil;
+import util.SqliteUtil;
  
 public class BackupListener implements ActionListener {
  
@@ -28,32 +28,32 @@ public class BackupListener implements ActionListener {
             return;
         }
         JFileChooser fc = new JFileChooser();
-        fc.setSelectedFile(new File("hutubill.sql"));
+        fc.setSelectedFile(new File("MyAccout.db"));
         fc.setFileFilter(new FileFilter() {
              
             @Override
             public String getDescription() {
-                return ".sql";
+                return ".db";
             }
              
             @Override
             public boolean accept(File f) {
-                return f.getName().toLowerCase().endsWith(".sql");
+                return f.getName().toLowerCase().endsWith(".db");
             }
         });
  
          int returnVal =  fc.showSaveDialog(p);
          File file = fc.getSelectedFile();
-         System.out.println(file);
+//         System.out.println(file);
          if (returnVal == JFileChooser.APPROVE_OPTION) {
-             //如果保存的文件名没有以.sql结尾，自动加上.sql
-             System.out.println(file);
-             if(!file.getName().toLowerCase().endsWith(".sql"))
-                 file = new File(file.getParent(),file.getName()+".sql");
-             System.out.println(file);
+             //如果保存的文件名没有以.db结尾，自动加上.db
+//             System.out.println(file);
+             if(!file.getName().toLowerCase().endsWith(".db"))
+                 file = new File(file.getParent(),file.getName()+".db");
+//             System.out.println(file);
               
             try {
-                MysqlUtil.backup(mysqlPath, file.getAbsolutePath());
+                SqliteUtil.backup(mysqlPath, file.getAbsolutePath());
                 JOptionPane.showMessageDialog(p, "备份成功,备份文件位于:\r\n"+file.getAbsolutePath());
             } catch (Exception e1) {
                 e1.printStackTrace();

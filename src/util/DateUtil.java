@@ -1,5 +1,7 @@
 package util;
   
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
   
@@ -41,7 +43,25 @@ public class DateUtil {
           
         return c.getTime();
     }
-      
+    public static Date monthBegin(String YearMonth) {
+    	SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM" );
+        Calendar c = Calendar.getInstance();
+    	try {
+			Date d = sdf.parse(YearMonth);
+	        c.setTime(d);
+	        c.set(Calendar.DATE, 1);
+	          
+	        c.set(Calendar.HOUR_OF_DAY, 0);
+	        c.set(Calendar.MINUTE, 0);
+	        c.set(Calendar.SECOND, 0);
+	        c.set(Calendar.MILLISECOND, 0);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+          
+        return c.getTime();
+    }    
     /**
      * 获取月末
      * @return
@@ -58,7 +78,26 @@ public class DateUtil {
         c.add(Calendar.DATE, -1);
         return c.getTime();
     }
-  
+    public static Date monthEnd(String YearMonth) {
+    	SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM" );
+        Calendar c = Calendar.getInstance();
+    	try {
+			Date d = sdf.parse(YearMonth);
+	        c.setTime(d);
+	        c.set(Calendar.HOUR, 0);
+	        c.set(Calendar.MINUTE, 0);
+	        c.set(Calendar.SECOND, 0);
+	          
+	        c.set(Calendar.DATE, 1);
+	        c.add(Calendar.MONTH, 1);
+	        c.add(Calendar.DATE, -1);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+          
+        return c.getTime();
+    }    
     /**
      * 获取本月一共有多少天
      * @return
@@ -70,7 +109,13 @@ public class DateUtil {
   
         return (int) ((lastDayMilliSeconds-firstDayMilliSeconds)/millisecondsOfOneDay) +1;
     }
-      
+    public static int thisMonthTotalDay(String YearMonth){
+        
+        long lastDayMilliSeconds = monthEnd(YearMonth).getTime();
+        long firstDayMilliSeconds = monthBegin(YearMonth).getTime();
+  
+        return (int) ((lastDayMilliSeconds-firstDayMilliSeconds)/millisecondsOfOneDay) +1;
+    }     
     /**
      *获取本月还剩多少天
      * @return
@@ -83,7 +128,7 @@ public class DateUtil {
     }  
       
     public static void main(String[] args) {
-        System.out.println(DateUtil.monthEnd());
+        System.out.println(DateUtil.thisMonthTotalDay("2019-09"));
      
     }
 }

@@ -32,7 +32,7 @@ public class MainPanel extends JPanel {
  
         GUIUtil.setImageIcon(bSpend, "home.png", "消费一览");
         GUIUtil.setImageIcon(bRecord, "record.png", "记一笔");
-        GUIUtil.setImageIcon(bCategoryDetail, "category1.png", "消费记录");
+        GUIUtil.setImageIcon(bCategoryDetail, "category1.png", "详细记录");
         GUIUtil.setImageIcon(bCategory, "category2.png", "消费分类");
         GUIUtil.setImageIcon(bReport, "report.png", "月消费报表");
         GUIUtil.setImageIcon(bConfig, "config.png", "设置");

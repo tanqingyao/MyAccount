@@ -88,7 +88,7 @@ public class ChartUtil {
         // 显示图例说明
         chart.setLegendOn(true);
         // 把图例说明放在左侧
-        chart.setLegendPosition(Chart.LEFT);
+        chart.setLegendPosition(Chart.BOTTOM);
         // 图例说明中的文字
         chart.setLegendLabels(new String[] { "月消费报表" });
         // 图例说明的字体

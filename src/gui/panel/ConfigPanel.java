@@ -22,7 +22,7 @@ public class ConfigPanel extends WorkingPanel {
     JLabel lBudget = new JLabel("本月预算(￥)");
     public JTextField tfBudget = new JTextField("0");
      
-    JLabel lMysql = new JLabel("Mysql安装目录");
+    JLabel lMysql = new JLabel("数据库文件目录");
     public JTextField tfMysqlPath = new JTextField("");
     
     JButton bSubmit = new JButton("更新");

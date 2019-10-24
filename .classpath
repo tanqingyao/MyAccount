@@ -9,7 +9,8 @@
 	<classpathentry kind="lib" path="/home/tanqingyao/eclipse-workspace/MyAccount/lib/chart.jar"/>
 	<classpathentry kind="lib" path="/home/tanqingyao/eclipse-workspace/MyAccount/lib/liquidlnf.jar"/>
 	<classpathentry kind="lib" path="/home/tanqingyao/eclipse-workspace/MyAccount/lib/swingx-core-1.6.2.jar"/>
-	<classpathentry kind="lib" path="/home/tanqingyao/eclipse-workspace/j2se/lib/mysql-connector-java-5.1.38.jar"/>
 	<classpathentry kind="lib" path="lib/beautyeye_lnf.jar"/>
+	<classpathentry kind="lib" path="lib/sqlite-jdbc-3.27.2.1.jar"/>
+	<classpathentry kind="lib" path="/j2se/lib/mysql-connector-java-5.1.38.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

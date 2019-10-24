@@ -3,13 +3,16 @@ package gui.listener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
- 
+
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
  
 import entity.Category;
+import gui.model.MonthComboBoxModel;
 import gui.panel.CategoryPanel;
 import gui.panel.MainPanel;
 import gui.panel.RecordPanel;
+import gui.panel.ReportPanel;
 import gui.panel.SpendPanel;
 import service.RecordService;
 import util.GUIUtil;
@@ -33,7 +36,6 @@ public class RecordListener implements ActionListener {
         Date d = p.datepick.getDate();
         new RecordService().add(spend, c, comment, d);
         JOptionPane.showMessageDialog(p, "添加成功");
-         
         MainPanel.instance.workingPanel.show(SpendPanel.instance);
          
     }
