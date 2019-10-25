@@ -50,6 +50,13 @@ public class CategoryDetailPanel extends WorkingPanel{
     public JButton bDelete = new JButton("删除");
     
     public CategoryDetailPanel() {
+    	//默认显示所有时间和类别
+    	cbAllTime.setSelected(true);
+    	datepickEnd.setEnabled(false);
+    	datepickStart.setEditable(false);
+    	
+    	cbAllCategory.setSelected(true);
+    	cbCategory.setEnabled(false);  
     	GUIUtil.setColor(ColorUtil.grayColor, lSymbol);
         GUIUtil.setColor(ColorUtil.blueColor, bEdit,bDelete);
         JPanel pMenu = new JPanel();
@@ -96,7 +103,7 @@ public class CategoryDetailPanel extends WorkingPanel{
     		ctm.rs = new RecordService().list(datepickStart.getDate(), datepickEnd.getDate(), (Category) cbModel.getSelectedItem());
         t.updateUI();
         t.getSelectionModel().setSelectionInterval(0, 0);
-         
+        cbModel.cs = new CategoryService().list();
         if(0==ctm.rs.size()){
             bEdit.setEnabled(false);
             bDelete.setEnabled(false);

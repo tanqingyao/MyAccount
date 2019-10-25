@@ -9,7 +9,7 @@ public class MainFrame extends JFrame{
     public static MainFrame instance = new MainFrame();
      
     private MainFrame(){
-        this.setSize(650,450);
+        this.setSize(650,550);
         this.setTitle("我的账单");
         this.setContentPane(MainPanel.instance);
         this.setLocationRelativeTo(null);

@@ -36,7 +36,7 @@ public class ReportPanel extends WorkingPanel {
     	pMenu.add(cbMonth);
         
         List<Record> rs = new ReportService().listThisMonthRecords();
-        Image i =ChartUtil.getImage(rs, 500, 250);
+        Image i =ChartUtil.getImage(rs, 500, 300);
         ImageIcon icon= new ImageIcon(i);
         l.setIcon(icon);
 
@@ -58,10 +58,10 @@ public class ReportPanel extends WorkingPanel {
 			rs = new ReportService().listThisMonthRecords();
 		else
 			rs = new ReportService().listThisMonthRecords(SelectedMonth);
-        Image i = ChartUtil.getImage(rs, 500, 250);
+        Image i = ChartUtil.getImage(rs, 500, 300);
         ImageIcon icon = new ImageIcon(i);
         l.setIcon(icon);		
-        
+        //更新下拉框月份信息
         cbModel.cs = new ReportService().listRecordsMonth();
         
 	}

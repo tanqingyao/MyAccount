@@ -11,7 +11,7 @@ import service.CategoryService;
  
 public class CategoryTableModel implements TableModel{
  
-    String[] columnNames = new String[]{"分类名称", "消费次数", "消费总额"};
+    String[] columnNames = new String[]{"Category", "消费次数", "消费总额"};
     
     // 使用从Service返回的List作为TableModel的数据
     

@@ -24,8 +24,10 @@ public class ToolBarListener implements ActionListener {
             p.workingPanel.show(ReportPanel.instance);
         	ReportPanel.instance.updateData();
         }
-        if (b == p.bCategoryDetail)
+        if (b == p.bCategoryDetail) {
+            CategoryDetailPanel.instance.updateData();
             p.workingPanel.show(CategoryDetailPanel.instance);
+        }
         if (b == p.bCategory)
             p.workingPanel.show(CategoryPanel.instance);
         if (b == p.bSpend)
